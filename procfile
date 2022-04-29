@@ -1,0 +1,1 @@
+web: gunicorn favoright_proj.wsgi
