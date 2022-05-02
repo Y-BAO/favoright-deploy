@@ -17,11 +17,6 @@ load_dotenv()
 
 API_KEY= os.getenv("SECRET_KEY")
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SAMESITE = 'None'
-SESSION_COOKIE_SAMESITE = 'None'
-
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -96,6 +91,13 @@ CSRF_TRUSTED_ORIGINS = [
 
 # added for authentication (required only for separate project setups)
 CORS_ALLOW_CREDENTIALS = True 
+
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
+
 
 # added for authentication (required for either separate project -or- hybrid project setups)
 REST_FRAMEWORK = { 
