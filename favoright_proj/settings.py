@@ -55,18 +55,23 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     
     "http://localhost:3000",
-    "https://favoright-deploy-frontend.herokuapp.com/"
+    "https://favoright-fontend-heroku.herokuapp.com"
    
    
 ]
 ROOT_URLCONF = 'favoright_proj.urls'
+
+CORS_ORIGIN_WHITELIST = [
+    "https://favoright-fontend-heroku.herokuapp.com",
+    ]
+
 
  
 
 # added for authentication (required only for separate project setups)
 CSRF_TRUSTED_ORIGINS = [ 
     "http://localhost:3000",
-    "https://favoright-deploy-frontend.herokuapp.com/"
+    # "https://favoright-fontend-heroku.herokuapp.com/"
 ]
 
 # added for authentication (required only for separate project setups)
