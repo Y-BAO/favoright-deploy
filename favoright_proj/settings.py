@@ -69,6 +69,14 @@ CORS_ALLOWED_ORIGINS = [
 ]
 ROOT_URLCONF = 'favoright_proj.urls'
 
+CORS_ORIGIN_WHITELIST  = [
+    
+    "http://localhost:3000",
+    "https://favoright-fontend-heroku.herokuapp.com",
+    "https://favoright-deploy-frontend.web.app",
+   
+   
+]
  
 
 # added for authentication (required only for separate project setups)
