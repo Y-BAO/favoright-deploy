@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import django_heroku
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+API_KEY= os.getenv("SECRET_KEY")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +25,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2^1b0kdgh!%o8gcx=8syi26bj%bj)571ewgw=k!who3y_h$r7t'
+SECRET_KEY = API_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+SESSION_COOKIE_SAMESITE = 'None'
 
 
 # Application definition
@@ -55,23 +62,21 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     
     "http://localhost:3000",
-    "https://favoright-fontend-heroku.herokuapp.com"
+    "https://favoright-fontend-heroku.herokuapp.com",
+    "https://favoright-deploy-frontend.web.app",
    
    
 ]
 ROOT_URLCONF = 'favoright_proj.urls'
-
-CORS_ORIGIN_WHITELIST = [
-    "https://favoright-fontend-heroku.herokuapp.com",
-    ]
-
 
  
 
 # added for authentication (required only for separate project setups)
 CSRF_TRUSTED_ORIGINS = [ 
     "http://localhost:3000",
-    # "https://favoright-fontend-heroku.herokuapp.com/"
+    "https://favoright-fontend-heroku.herokuapp.com",
+    "https://favoright-deploy-frontend.web.app",
+
 ]
 
 # added for authentication (required only for separate project setups)
