@@ -9,6 +9,9 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+
+from datetime import timedelta
+
 import django_heroku
 from pathlib import Path
 import os
@@ -49,6 +52,7 @@ INSTALLED_APPS = [
     "favoright_app",
     "rest_framework",
      "corsheaders",
+     "rest_framework_simplejwt"
 ]
 
 MIDDLEWARE = [
@@ -71,38 +75,33 @@ CORS_ALLOWED_ORIGINS = [
 ]
 ROOT_URLCONF = 'favoright_proj.urls'
 
-CORS_ORIGIN_WHITELIST  = [
-    
-    "http://localhost:3000",
-    "https://favoright-fontend-heroku.herokuapp.com",
-    "https://favoright-deploy-frontend.web.app",
-   
-   
-]
+ 
  
 
 # added for authentication (required only for separate project setups)
-CSRF_TRUSTED_ORIGINS = [ 
-    "http://localhost:3000",
-    "https://favoright-fontend-heroku.herokuapp.com",
-    "https://favoright-deploy-frontend.web.app",
+# CSRF_TRUSTED_ORIGINS = [ 
+#     "http://localhost:3000",
+#     "https://favoright-fontend-heroku.herokuapp.com",
+#     "https://favoright-deploy-frontend.web.app",
 
-]
+# ]
 
 # added for authentication (required only for separate project setups)
-CORS_ALLOW_CREDENTIALS = True 
+# CORS_ALLOW_CREDENTIALS = True 
 
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SAMESITE = 'None'
-SESSION_COOKIE_SAMESITE = 'None'
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SAMESITE = 'None'
+# SESSION_COOKIE_SAMESITE = 'None'
 
 
 # added for authentication (required for either separate project -or- hybrid project setups)
 REST_FRAMEWORK = { 
     "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
         "rest_framework.authentication.SessionAuthentication",
+
     ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
@@ -110,6 +109,9 @@ REST_FRAMEWORK = {
     ]
 }
 
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME":timedelta(minutes=120),
+}
 
 TEMPLATES = [
     {
