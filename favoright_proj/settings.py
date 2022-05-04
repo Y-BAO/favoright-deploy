@@ -66,10 +66,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 CORS_ALLOWED_ORIGINS = [
-    
+    "https://www.favor-right.com",
     "http://localhost:3000",
     "https://favoright-fontend-heroku.herokuapp.com",
     "https://favoright-deploy-frontend.web.app",
+    
    
    
 ]
